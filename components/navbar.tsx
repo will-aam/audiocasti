@@ -6,16 +6,15 @@ import { Input } from '@/components/ui/input'
 import { ThemeToggle } from '@/components/theme-toggle'
 import { UserMenu } from '@/components/user-menu'
 import { useState } from 'react'
-import { useRouter } from 'next/navigation'
 
 export function Navbar() {
   const [searchQuery, setSearchQuery] = useState('')
-  const router = useRouter()
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault()
     if (searchQuery.trim()) {
-      router.push(`/search?q=${encodeURIComponent(searchQuery)}`)
+      // Use window.location para navegação no lado do cliente
+      window.location.href = `/search?q=${encodeURIComponent(searchQuery)}`
     }
   }
 
